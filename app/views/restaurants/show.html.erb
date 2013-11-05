@@ -1,7 +1,11 @@
 <%= image_tag @restaurant.photo_url(:mast_head).to_s %>
 <h1><%= @restaurant.name %></h1>
+<strong>Description: </strong>
 <p><%= @restaurant.description %></p>
+<strong>Address: </strong>
 <p><%= @restaurant.address %></p>
+<strong>Phone Number: </strong>
+<p><%=@restaurant.phone_number %></p>
 <%= image_tag(@map_url) %>
 
 <div>

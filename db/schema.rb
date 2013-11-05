@@ -11,16 +11,20 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131030212542) do
+ActiveRecord::Schema.define(:version => 20131104212836) do
 
   create_table "restaurants", :force => true do |t|
     t.string   "name"
     t.string   "description"
-    t.string   "address"
     t.integer  "phone_number"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
     t.string   "photo"
+    t.string   "street"
+    t.string   "apt"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zip_code"
   end
 
 end

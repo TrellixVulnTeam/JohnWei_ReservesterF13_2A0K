@@ -11,6 +11,9 @@ gem 'jquery-rails'
 
 group :development, :test do
 	gem 'rspec-rails', '~> 2.0'
+  gem 'factory_girl_rails'
+  gem 'faker'
+  gem 'capybara'
 	gem 'dotenv-rails'
 	gem 'mysql2'
   gem "better_errors"

@@ -17,6 +17,8 @@ class RestaurantsController < ApplicationController
 	def create
 		@restaurant = Restaurant.new(params[:restaurant])
 		#how does it know :restaurant exists. where did it come from?
+		#rails has a convention to name :restaurant to match the model Restaurant.  I also have named it :restaurant.
+		#how would I rename it, if I wanted to call it something else?
 		@restaurant.save
 		redirect_to @restaurant
 	end
