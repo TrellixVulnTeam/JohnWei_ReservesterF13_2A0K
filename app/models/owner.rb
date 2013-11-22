@@ -32,4 +32,8 @@ class Owner < ActiveRecord::Base
     end
   end
 
+  def back_pocketed?
+    self.where()
+  end
+
 end

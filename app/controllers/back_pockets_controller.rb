@@ -40,7 +40,6 @@ class BackPocketsController < ApplicationController
   # POST /Back_pockets
   # POST /Back_pockets.json
   def create
-    @
     @back_pocket = Back_pocket.new(params[:Back_pocket])
 
     respond_to do |format|
