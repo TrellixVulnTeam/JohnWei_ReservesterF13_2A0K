@@ -15,6 +15,7 @@ class RestaurantsController < ApplicationController
 		@address = @restaurant.address.split(' ').join('+').to_str
 		@map_url = "http://maps.googleapis.com/maps/api/staticmap?&markers=color:blue|#{@address}&zoom=15&size=600x300&sensor=false&key=AIzaSyA0vhNQ5sapyK1I7QE-iKn55eQ3J6rJluo"
 		@reservation = @restaurant.reservations.new
+		@back_pocketed_by = @restaurant.back_pocketed_by
 	end
 
 	def new
@@ -59,22 +60,25 @@ class RestaurantsController < ApplicationController
 		redirect_to root_path
 	end
 
+# is this method back_pocket in the wrong controller?  It is here because the routes expect it.
 	def back_pocket
 		@restaurant = Restaurant.find(params[:restaurant_id])
 		type = params[:type]
 		if type == "add"
 			current_owner.back_pocket_restaurants << @restaurant
-			redirect_to @restaurant, flash: { success: "Added location to back pocket for future explorations!" }
+			respond_to do |format|
+				format.html { redirect_to @restaurant, flash: { success: "Added location to back pocket for future explorations!" }}
+				format.json { render json: @restaurant, status: :added, location: @restaurant}
+			end
 		elsif type == "drop"
 			current_owner.back_pocket_restaurants.delete(@restaurant)
-			redirect_to @restaurant, flash: { success: "Removed location from back pocket!"}
+			respond_to do |format|
+				format.html { redirect_to @restaurant, flash: { success: "Removed location from back pocket!"}}
+				format.json { render json: @restaurant, status: :deleted, location: @restaurant }
+			end
 		else
 			redirect_to @restaurant, noice: "Nothing happened..."		
 		end
 	end
-
-	#def pocketed?(restaurant)
-	#	back_pockets.where(owner_id: current_user.id, restaurant_id: restaurant.id)
-	#end
 
 end

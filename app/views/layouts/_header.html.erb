@@ -8,20 +8,15 @@
       <li><%= link_to "Owners", owners_path %></li>
       <li><%= link_to "About", about_path %></li>
       <% if owner_signed_in? %>
-        <li><%= link_to "Dashboard", dashboard_path(current_owner) %></li>
+        <li><%=link_to "Meetings Dashboard", dashboard_path(current_owner), method: :delete %></li>
       <% end %>
-
     </ul>
-    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
-            <li><a tabindex="-1" href="#">Regular link</a></li>
-            <li class="disabled"><a tabindex="-1" href="#">Disabled link</a></li>
-            <li><a tabindex="-1" href="#">Another link</a></li>
-          </ul>
+
 
     <ul class="nav pull-right">
       <li>
       	<% if owner_signed_in? %>
-          <%= link_to "Sign Out", destroy_owner_session_path, method: :delete, class: "float-right" %>
+          <li><%=link_to "Sign Out", destroy_owner_session_path, method: :delete %></li>
       	<% else %>
       		<%= link_to "Sign In", new_owner_session_path, class: "float-right" %>
       	<% end %>

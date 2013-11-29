@@ -9,5 +9,7 @@ class OwnersController < ApplicationController
 		@owner = Owner.find(params[:id])
 		@restaurants = @owner.restaurants
 		@reservations = @owner.reservations
+
+		
 	end
 end

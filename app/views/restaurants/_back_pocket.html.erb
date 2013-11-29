@@ -1,0 +1,10 @@
+<div id = "back_pocket">
+	<% if signed_in? %>
+		<% if BackPocket.pocketed?(current_owner, @restaurant) %>
+			<%= link_to "Drop from Pocket", restaurant_back_pocket_path(@restaurant, type: "drop"), method: :put, class: "backpocket btn", remote: true %>
+		<% else %>
+			<%= link_to "Pocket for later", restaurant_back_pocket_path(@restaurant, type: "add"), method: :put, class: "backpocket btn", remote: true %>
+		<% end %>
+	<% end %>
+	<p>Pocketed by <%= pluralize(@back_pocketed_by.count, 'person') %></p>
+</div>
