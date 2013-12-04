@@ -60,7 +60,6 @@ class RestaurantsController < ApplicationController
 		redirect_to root_path
 	end
 
-# is this method back_pocket in the wrong controller?  It is here because the routes expect it.
 	def back_pocket
 		@restaurant = Restaurant.find(params[:restaurant_id])
 		type = params[:type]
@@ -68,13 +67,13 @@ class RestaurantsController < ApplicationController
 			current_owner.back_pocket_restaurants << @restaurant
 			respond_to do |format|
 				format.html { redirect_to @restaurant, flash: { success: "Added location to back pocket for future explorations!" }}
-				format.json { render json: @restaurant, status: :added, location: @restaurant}
+				format.js { render :back_pocket_add, status: :created}
 			end
 		elsif type == "drop"
 			current_owner.back_pocket_restaurants.delete(@restaurant)
 			respond_to do |format|
 				format.html { redirect_to @restaurant, flash: { success: "Removed location from back pocket!"}}
-				format.json { render json: @restaurant, status: :deleted, location: @restaurant }
+				format.js { render :back_pocket_drop, status: :deleted }
 			end
 		else
 			redirect_to @restaurant, noice: "Nothing happened..."		

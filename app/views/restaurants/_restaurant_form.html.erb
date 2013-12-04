@@ -14,7 +14,10 @@
 		<%= f.text_field :zip_code, placeholder: "zipcode" %>
 	</div>
 	<div><%= f.text_field :phone_number, placeholder: "Phone number" %></div>
-	<div><%= f.file_field :photo, "data-pre" => @restaurant.photo %></div>
+	<div>
+		<%= f.file_field :photo, "data-pre" => @restaurant.photo %>
+		<% f.file_field :photo_cache %>
+	</div>
 	
 	
 	<%= f.label :categories %>

@@ -21,7 +21,9 @@
 	<div class = "span2">
 		<h5>Suggest Meeting Here!</h5>
 		<%= render 'reservation_form' %>
-		<%= render 'back_pocket' %>
+		<% if signed_in? %>
+			<%= render 'back_pocket' %>
+		<% end %>
 	</div>
 	<div class = "span8">
 		<p><i>Posted by <%= @restaurant.owner.name.downcase.capitalize %></i></p>
