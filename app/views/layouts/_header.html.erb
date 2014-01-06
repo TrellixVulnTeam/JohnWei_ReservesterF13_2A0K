@@ -8,13 +8,14 @@
       <li><%= link_to "Owners", owners_path %></li>
       <li><%= link_to "About", about_path %></li>
       <% if owner_signed_in? %>
-        <li><%=link_to "Meetings Dashboard", dashboard_path(current_owner), method: :delete %></li>
+        <li><%=link_to "Meetings Dashboard", dashboard_path(current_owner) %></li>
       <% end %>
     </ul>
 
 
     <ul class="nav pull-right">
       <li>
+        <%= link_to "Sign in with Twitter", owner_omniauth_authorize_path(:twitter) %>
       	<% if owner_signed_in? %>
           <li><%=link_to "Sign Out", destroy_owner_session_path, method: :delete %></li>
       	<% else %>

@@ -10,6 +10,7 @@ gem 'carrierwave'
 gem "rmagick"
 gem 'jquery-rails'
 gem 'devise'
+gem 'omniauth-twitter'
 
 group :development, :test do
 	gem 'rspec-rails', '~> 2.0'
@@ -27,6 +28,7 @@ group  :production do
 	gem 'rails_12factor'
 	gem 'pg'
   gem "fog", "~> 1.3.1"
+  gem 'newrelic_rpm'
 end
 
 # Gems used only for assets and not required
